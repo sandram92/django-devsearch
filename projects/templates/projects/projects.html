@@ -1,7 +1,5 @@
 {% extends 'main.html' %} {% block content %}
 
-
-
 <!-- Main Section -->
 <main class="projects">
   <section class="hero-section text-center">
@@ -32,8 +30,7 @@
   <section class="projectsList">
     <div class="container">
       <div class="grid grid--three">
-
-  {% for project in projects %}
+        {% for project in projects %}
         <div class="column">
           <div class="card project">
             <a href="{% url 'project' project.id %}" class="project">
@@ -43,25 +40,28 @@
                 alt="project thumbnail"
               />
               <div class="card__body">
-                <h3 class="project__title">
-                  {{ project.title }}
-                </h3>
+                <h3 class="project__title">{{ project.title }}</h3>
                 <p>
-                  <a class="project__author" href="{% url 'project' project.id %}"
+                  <a
+                    class="project__author"
+                    href="{% url 'user-profile' project.owner.id %}"
                     >By {{ project.owner.name }}</a
                   >
                 </p>
                 <p class="project--rating">
-                  <span style="font-weight: bold">{{ project.vote_ratio }}%</span> Positive Feedback
-                  ({{ project.vote_total }} Vote{{project.vote_total|pluralize:"s"}})
+                  <span style="font-weight: bold"
+                    >{{ project.vote_ratio }}%</span
+                  >
+                  Positive Feedback ({{ project.vote_total }}
+                  Vote{{project.vote_total|pluralize:"s"}})
                 </p>
-                <div class="project__tags">  
-                   {% for tag in project.tags.all %}
+                <div class="project__tags">
+                  {% for tag in project.tags.all %}
 
                   <span class="tag tag--pill tag--main">
                     <small>{{ tag.name }}</small>
                   </span>
-                    {% endfor %}
+                  {% endfor %}
                   <!-- <span class="tag tag--pill tag--main">
                     <small>GraphQL</small>
                   </span>
@@ -74,9 +74,7 @@
           </div>
         </div>
 
-
-  {% endfor %}
-
+        {% endfor %}
       </div>
     </div>
   </section>
