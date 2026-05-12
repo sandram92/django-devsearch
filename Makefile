@@ -1,22 +1,27 @@
+PYTHON ?= .venv/bin/python
+MANAGE := $(PYTHON) manage.py
+
+.PHONY: run migrate makemigrations shell createsuperuser collectstatic test
+
 run:
-	python manage.py runserver
+	$(MANAGE) runserver
 
 migrate:
-	python manage.py migrate
+	$(MANAGE) migrate
 
 makemigrations:
-	python manage.py makemigrations
+	$(MANAGE) makemigrations
 
 shell:
-	python manage.py shell
+	$(MANAGE) shell
 
 createsuperuser:
-	python manage.py createsuperuser
+	$(MANAGE) createsuperuser
 
 collectstatic:
-	python manage.py collectstatic
+	$(MANAGE) collectstatic
 
 test:
-	python manage.py test
+	$(MANAGE) test
 
 # Run with: make run, make migrate, etc.

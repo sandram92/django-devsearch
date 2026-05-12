@@ -26,3 +26,7 @@ if "%1"=="run" (
     echo   collectstatic    - Collect static files
     echo   test             - Run tests
 )
+
+
+
+ 
